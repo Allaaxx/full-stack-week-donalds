@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ConsumptionMethod } from "@prisma/client";
+import { Loader2Icon } from "lucide-react";
 import { useParams, useSearchParams } from "next/navigation";
 import { useContext, useTransition } from "react";
 import { useForm } from "react-hook-form";
@@ -33,7 +34,6 @@ import { Input } from "@/components/ui/input";
 import { createOrder } from "../actions/create-order";
 import { CartContext } from "../contexts/carts";
 import { isValidCpf } from "../helpers/cpf";
-import { Loader2Icon } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, {
@@ -76,7 +76,7 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
       const consumptionMethod = searchParams.get(
         "consumptionMethod",
       ) as ConsumptionMethod;
-      startTransition( async() =>{
+      startTransition(async () => {
         await createOrder({
           consumptionMethod,
           customerName: data.name,
@@ -143,7 +143,7 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
                   className="rounded-full"
                   disabled={isPending}
                 >
-                  {isPending && <Loader2Icon className="animate-spin"/>}
+                  {isPending && <Loader2Icon className="animate-spin" />}
                   Finalizar
                 </Button>
                 <DrawerClose asChild>
