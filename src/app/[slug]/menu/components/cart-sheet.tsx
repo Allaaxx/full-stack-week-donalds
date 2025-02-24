@@ -1,5 +1,6 @@
 import { useContext } from "react";
 
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -9,20 +10,33 @@ import {
 
 import { CartContext } from "../contexts/carts";
 import CartProductItem from "./cart-product-item";
+import { Card, CardContent } from "@/components/ui/card";
+import { formatCurrency } from "@/helpers/format-currency";
 
 const CartSheet = () => {
-  const { isOpen, toggleCart, products } = useContext(CartContext);
+  const { isOpen, toggleCart, products, total } = useContext(CartContext);
   return (
     <Sheet open={isOpen} onOpenChange={toggleCart}>
       <SheetContent className="w-[80%]">
         <SheetHeader>
           <SheetTitle className="text-left"> Sacola </SheetTitle>
-          
         </SheetHeader>
-        <div className="py-5">
-        {products.map((product) => (
-          <CartProductItem key={product.id} product={product} />
-        ))}
+        <div className="flex flex-col h-full py-5">
+          <div className=" flex-auto">
+            {products.map((product) => (
+              <CartProductItem key={product.id} product={product} />
+            ))}
+          </div>
+          <Card className="mb-6">
+              <CardContent className="p-5">
+                <div className="flex justify-between">
+                  <p className="text-sm text-muted-foreground">Total</p>
+                  <p className="text-sm font-semibold">{formatCurrency(total)}</p>
+
+                </div>
+              </CardContent>
+          </Card>
+          <Button className="w-full rounded-full"> Finalizar Pedido</Button>
         </div>
       </SheetContent>
     </Sheet>
