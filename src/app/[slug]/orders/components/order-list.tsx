@@ -1,6 +1,9 @@
+"use client"
+
 import { OrderStatus, Prisma } from "@prisma/client";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -27,23 +30,30 @@ interface OrderListProps {
   >;
 }
 
-const getStatusLabel = (status: OrderStatus) =>{
-    if (status === OrderStatus.FINISHED) {
-        return "Finalizado";
-    }
-    if (status === OrderStatus.IN_PREPARATION) {
-        return "Pendente";
-    }
-    if (status === OrderStatus.PENDING) {
-        return "Em Preparo";
-    }
-    return "";
-}
+const getStatusLabel = (status: OrderStatus) => {
+  if (status === OrderStatus.FINISHED) {
+    return "Finalizado";
+  }
+  if (status === OrderStatus.IN_PREPARATION) {
+    return "Pendente";
+  }
+  if (status === OrderStatus.PENDING) {
+    return "Em Preparo";
+  }
+  return "";
+};
 
 const OrderList = ({ orders }: OrderListProps) => {
+  const router = useRouter();
+  const handleBackClick = () => router.back();
   return (
     <div className="space-y-6 p-6">
-      <Button size="icon" variant="secondary" className="rounded-full">
+      <Button
+        size="icon"
+        variant="secondary"
+        className="rounded-full"
+        onClick={handleBackClick}
+      >
         <ChevronLeftIcon />
       </Button>
       <div className="flex items-center gap-3">
@@ -53,9 +63,13 @@ const OrderList = ({ orders }: OrderListProps) => {
       {orders.map((order) => (
         <Card key={order.id} className="p-4">
           <CardContent className="space-y-4 p-5">
-            <div className={`w-fit rounded-full px-2 py-1 text-xs font-semibold text-white ${
-                order.status === OrderStatus.FINISHED ? "bg-green-500 text-white" : "bg-gray-200 text-gray-500"
-            }`}>
+            <div
+              className={`w-fit rounded-full px-2 py-1 text-xs font-semibold text-white ${
+                order.status === OrderStatus.FINISHED
+                  ? "bg-green-500 text-white"
+                  : "bg-gray-200 text-gray-500"
+              }`}
+            >
               {getStatusLabel(order.status)}
             </div>
             <div className="flex items-center gap-2">
