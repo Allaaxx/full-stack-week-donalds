@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { OrderStatus, Prisma } from "@prisma/client";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
@@ -38,7 +38,13 @@ const getStatusLabel = (status: OrderStatus) => {
     return "Pendente";
   }
   if (status === OrderStatus.PENDING) {
-    return "Em Preparo";
+    return "Em preparo";
+  }
+  if (status === OrderStatus.PAYMENT_CONFIRMED) {
+    return "Pagamento confirmado";
+  }
+  if (status === OrderStatus.PAYMENT_FAILD) {
+    return "Pagamento falhou";
   }
   return "";
 };
@@ -64,8 +70,7 @@ const OrderList = ({ orders }: OrderListProps) => {
         <Card key={order.id} className="p-4">
           <CardContent className="space-y-4 p-5">
             <div
-              className={`w-fit rounded-full px-2 py-1 text-xs font-semibold text-white ${
-                order.status === OrderStatus.FINISHED
+              className={`w-fit rounded-full px-2 py-1 text-xs font-semibold text-white ${([OrderStatus.PAYMENT_CONFIRMED] as OrderStatus[]) .includes(order.status)
                   ? "bg-green-500 text-white"
                   : "bg-gray-200 text-gray-500"
               }`}
