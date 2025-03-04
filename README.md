@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Full Stack Week - Donald's 🍔
 
-## Getting Started
+![Full Stack Week](https://img.shields.io/badge/FullStackWeek-Next.js-blue.svg) ![Prisma](https://img.shields.io/badge/Prisma-ORM-green.svg) ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-Utility--first-blue.svg)
 
-First, run the development server:
+## 📌 Sobre o Projeto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Este projeto foi desenvolvido durante a **Full Stack Week**, evento organizado pelo **Felipe Rocha** do canal [Dicas para Devs](https://www.youtube.com/@dicasparadevs). O objetivo é criar uma aplicação **full stack** utilizando tecnologias modernas como **Next.js, Prisma e TailwindCSS**, proporcionando uma experiência otimizada e eficiente tanto para o front-end quanto para o back-end.
+
+## 🚀 Tecnologias Utilizadas
+
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
+
+- **[Next.js 15](https://nextjs.org/)** - Framework React para aplicações full stack.
+- **[React 19](https://react.dev/)** - Biblioteca JavaScript para construção de interfaces.
+- **[Prisma](https://www.prisma.io/)** - ORM moderno para gerenciamento do banco de dados.
+- **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS para estilização rápida e eficiente.
+- **[React Hook Form](https://react-hook-form.com/)** - Gerenciamento de formulários otimizado.
+- **[Radix UI](https://www.radix-ui.com/)** - Componentes acessíveis e estilizados.
+- **[Zod](https://zod.dev/)** - Validação de schemas no front-end e back-end.
+
+## 📂 Estrutura do Projeto
+
+```
+📁 full-stack-week-donalds
+├── 📂 prisma         # Configuração do Prisma e seed do banco
+├── 📂 public         # Arquivos estáticos
+├── 📂 src
+│   ├── 📂 components # Componentes reutilizáveis
+│   ├── 📂 pages      # Rotas e páginas
+│   ├── 📂 styles     # Estilos com TailwindCSS
+│   ├── 📂 utils      # Funções auxiliares
+├── .env             # Variáveis de ambiente
+├── next.config.js   # Configuração do Next.js
+├── tailwind.config.js # Configuração do TailwindCSS
+├── tsconfig.json    # Configuração do TypeScript
+└── package.json     # Dependências e scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Instalação e Execução
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1️⃣ Clonar o repositório
+```bash
+  git clone https://github.com/Allaaxx/full-stack-week-donalds.git
+  cd full-stack-week-donalds
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2️⃣ Instalar dependências
+```bash
+  npm install  # ou yarn install
+```
 
-## Learn More
+### 3️⃣ Configurar o banco de dados
+- Criar um arquivo **.env** baseado no **.env.example**.
+- Rodar as migrations do Prisma:
+```bash
+  npx prisma migrate dev
+```
+- Gerar os modelos do Prisma:
+```bash
+  npx prisma generate
+```
+- (Opcional) Rodar o seed para popular o banco:
+```bash
+  npm run seed
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 4️⃣ Rodar a aplicação
+```bash
+  npm run dev  # ou yarn dev
+```
+Acesse **http://localhost:3000** no navegador.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✅ Funcionalidades
+- Autenticação de usuários
+- Gerenciamento de produtos
+- Sistema de pedidos e pagamentos
+- Interface responsiva e estilizada com Tailwind CSS
+- Banco de dados integrado com Prisma ORM
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔥 Contribuição
+Sinta-se à vontade para contribuir com melhorias, ajustes e novas funcionalidades!
 
-## Deploy on Vercel
+1. Faça um **fork** do repositório
+2. Crie uma **branch** (`feature/nova-funcionalidade`)
+3. Faça um **commit** das suas alterações (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Faça um **push** da branch (`git push origin feature/nova-funcionalidade`)
+5. Abra um **Pull Request** 🚀
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Feito com ❤️ durante a **Full Stack Week** 🚀
+
